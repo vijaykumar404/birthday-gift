@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Friend Birthday</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #000080, #800080);
+    color: white;
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 400px;
+}
+
+.layer {
+    display: none;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.active {
+    display: block;
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #ff4d6d;
+    cursor: pointer;
+    width: 100%;
+}
+
+img {
+    width: 100%;
+    max-height: 250px;
+    border-radius: 15px;
+    margin-top: 15px;
+    object-fit: cover;
+}
+
+input {
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px;
+    background: white;
+    color: black;
+    border-radius: 8px;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LAYER 1 -->
+    <div id="layer1" class="layer active">
+        <h1>🎁 Tap for Surprise</h1>
+        <button onclick="nextLayer(1)">Open ❤️</button>
+    </div>
+
+    <!-- LAYER 2 -->
+    <div id="layer2" class="layer">
+        <h1>💖 Happy Birthday Bestie</h1>
+        <p> 🎂
+You’re not just my friend, you’re my biggest supporter ❤️ 😍</p>
+        <button onclick="nextLayer(2)">Next 🎉</button>
+    </div>
+
+    <!-- LAYER 3 (PHOTO) -->
+    <div id="layer3" class="layer">
+        <h1>📸 Our Memories</h1>
+        <input type="file" accept="image/*" onchange="loadImage(event)">
+        <img id="preview">
+        <button onclick="nextLayer(3)">Next 🎂</button>
+    </div>
+
+    <!-- LAYER 4 -->
+    <div id="layer4" class="layer">
+        <h1>🎂 Happy Birthday 🎂</h1>
+        <p>I Love You Best Friend 💕</p>
+        <p>Stay happy always 😊</p>
+    </div>
+
+</div>
+
+<script>
+function nextLayer(current) {
+    document.getElementById("layer" + current).classList.remove("active");
+    document.getElementById("layer" + (current + 1)).classList.add("active");
+}
+
+function loadImage(event) {
+    let img = document.getElementById("preview");
+    img.src = URL.createObjectURL(event.target.files[0]);
+}
+</script>
+
+</body>
+</html>
